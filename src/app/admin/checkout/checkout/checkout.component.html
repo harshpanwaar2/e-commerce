@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+
+<app-hero title="Admin - Home"></app-hero>
+
+<div class="container-fluid my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-md-9">
+            <h5 class="bg-primary text-center p-2 text-light">Checkout </h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>UserId</th>
+                            <th>Order Status</th>
+                            <th>Paymenent Mode</th>
+                            <th>Paymenent Status</th>
+                            <th>Subtotal</th>
+                            <th>Shipping</th>
+                            <th>Total</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data">
+                            <td>{{item.id}}</td>
+                            <td>{{item.user}}</td>
+                            <td>{{item.orderStatus}}</td>
+                            <td>{{item.paymentMode}}</td>
+                            <td>{{item.paymentStatus}}</td>
+                            <td>&#8377;{{item.subtotal}}</td>
+                            <td>&#8377;{{item.shipping}}</td>
+                            <td>&#8377;{{item.total}}</td>
+                            <td>{{item.date |date:"medium" }}</td>
+                            <td><a [routerLink]="['/admin/checkout/show']" [queryParams]="{'id':item.id}"><i class="fa fa-eye"></i></a></td>
+                            
+                           
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

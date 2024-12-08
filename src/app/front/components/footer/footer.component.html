@@ -1,0 +1,57 @@
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <h4 class="text-light mb-4">Fmart</h4>
+                <p class="mb-2"><i class="fa fa-map-marker me-3"></i>A-43 sector-16 Noida</p>
+                <p><a  href="tel:+919760636615"  class="mb-2"><i class="fa fa-phone-alt me-3"></i>+919760636615</a></p>
+                <p><a  href="https://wa:me+919760636615"  class="mb-2"><i class="fa fa-whatsapp me-3"></i>+919760636615</a></p>
+               <p> <a href="mailto:harshpanwar@gmail.com"class="mb-2"><i class="fa fa-envelope me-3"></i>harshpanwar&#64;gmail.com</a></p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-lg-2 col-md-6">
+                <h4 class="text-light mb-4">Quick Links</h4>
+                <a class="btn btn-link" routerLink="/">Home</a>
+                <a class="btn btn-link" routerLink="/about">About Us</a>
+                <a class="btn btn-link" routerLink="/shop">Shop</a>
+                <a class="btn btn-link" routerLink="/testimonial">Testimonials</a>
+                <a class="btn btn-link" routerLink="/contact">Contact Us</a>
+                
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h4 class="text-light mb-4">Quick Links</h4>
+                <a class="btn btn-link" href="#">T&C Policy</a> 
+                <a class="btn btn-link" href="#">Prinacy Policy</a>
+                <a class="btn btn-link" href="#">Return Policy</a>
+                <a class="btn btn-link" href="#">Refund Policy</a>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h4 class="text-light mb-4">Newsletter</h4>
+                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                <p *ngIf="message" class="text-light">{{message}}</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" (change)="getInputData($event)" type="text" placeholder="Your email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2"(click)="postData()" >Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">www.Fmart.com</a>, All Right Reserved.
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

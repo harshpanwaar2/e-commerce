@@ -1,0 +1,109 @@
+<app-navbar></app-navbar>
+
+
+<app-hero title="SignUp"></app-hero>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-10 col-11 m-auto">
+            <h5 class="bg-primary text-center text-light p-2">Create Your Free Account</h5>
+
+            <form [formGroup]="myForm" (submit)="postData($event)">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Name*</label>
+                        <input type="text" name="name" formControlName="name"
+                            [ngClass]="name.invalid && name.touched?'border-danger':'border-primary'"
+                            class="form-control border-3" placeholder="Full Name">
+                        <div *ngIf="name.invalid && name.touched">
+                            <p *ngIf="name.hasError('required')" class="text-danger">Name Field Is Mendatory</p>
+                            <p *ngIf="name.hasError('minlength') || name.hasError('maxlength')" class="text-danger">Name
+                                Length Must Be 3-50 characters</p>
+                                
+
+                        </div>
+                       
+
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label> User Name*</label>
+                            <input type="text" name="username" formControlName="username"
+                                [ngClass]="username.invalid && username.touched?'border-danger':'border-primary'"
+                                class="form-control border-3" placeholder="User Name">
+                            <div *ngIf="username.invalid && username.touched">
+                                <p *ngIf="username.hasError('required')" class="text-danger">Name Field Is Mendatory</p>
+                                <p *ngIf="username.hasError('minlength') || username.hasError('maxlength')" class="text-danger">Name
+                                    Length Must Be 3-50 characters</p>
+    
+                            </div>
+                            <p *ngIf="usernameError" class="text-danger">{{usernameError}}</p>
+                            </div>
+                    
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Email Address*</label>
+                        <input type="text" name="email" formControlName="email"
+                            [ngClass]="email.invalid && email.touched?'border-danger':'border-primary'"
+                            class="form-control border-3" placeholder="Email Address">
+                        <div *ngIf="email.invalid && email.touched">
+                            <p *ngIf="email.hasError('required')" class="text-danger">Email Address Field Is Mendatory</p>
+                            <p *ngIf="email.hasError('minlength') || email.hasError('maxlength')" class="text-danger">Name
+                                Length Must Be 13-100 characters</p>
+
+                        </div>
+                        <p *ngIf="emailError" class="text-danger">{{emailError}}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label> Phone Number*</label>
+                            <input type="text" name="phone" formControlName="phone"
+                                [ngClass]="phone.invalid && phone.touched?'border-danger':'border-primary'"
+                                class="form-control border-3" placeholder="Phone Number">
+                            <div *ngIf="phone.invalid && phone.touched">
+                                <p *ngIf="phone.hasError('required')" class="text-danger">Phone Field Is Mendatory</p>
+                                <p *ngIf="phone.hasError('minlength') || phone.hasError('maxlength')" class="text-danger">Name
+                                    Length Must Be 10-15 characters</p>
+    
+                            </div>
+                            </div>
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Password*</label>
+                        <input type="text" name="password" formControlName="password"
+                            [ngClass]="password.invalid && password.touched?'border-danger':'border-primary'"
+                            class="form-control border-3" placeholder="Password">
+                        <div *ngIf="password.invalid && password.touched">
+                            <p *ngIf="password.hasError('required')" class="text-danger">Password Field Is Mendatory</p>
+                          
+                        </div>
+                        <p *ngIf="passwordError" class="text-danger">{{passwordError}}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label> Confirm Password*</label>
+                            <input type="text" name="cpassword" formControlName="cpassword"
+                                class="form-control border-3 border-primary" placeholder="Confirm Password">
+                            
+                            </div>
+                    
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid" >Signup</button>
+                </div>
+                
+                
+            </form>
+            <a routerLink="/login">Already have an Account?Login</a>
+
+        </div>
+    </div>
+
+</div>
+
+
+<app-footer></app-footer>

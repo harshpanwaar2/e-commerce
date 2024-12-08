@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+
+
+<app-hero title="Update Profile"></app-hero>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-10 col-11 m-auto">
+            <h5 class="bg-primary text-center text-light p-2">Update Your Profile Details </h5>
+
+            <form [formGroup]="myForm" (submit)="postData($event)">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Name*</label>
+                        <input type="text" name="name" formControlName="name"
+                            [ngClass]="name.invalid && name.touched?'border-danger':'border-primary'"
+                            class="form-control border-3" placeholder="Full Name">
+                        <div *ngIf="name.invalid && name.touched">
+                            <p *ngIf="name.hasError('required')" class="text-danger">Name Field Is Mendatory</p>
+                            <p *ngIf="name.hasError('minlength') || name.hasError('maxlength')" class="text-danger">Name
+                                Length Must Be 3-50 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label> Phone Number*</label>
+                        <input type="text" name="phone" formControlName="phone"
+                            [ngClass]="phone.invalid && phone.touched?'border-danger':'border-primary'"
+                            class="form-control border-3" placeholder="Phone Number">
+                        <div *ngIf="phone.invalid && phone.touched">
+                            <p *ngIf="phone.hasError('required')" class="text-danger">Phone Field Is Mendatory</p>
+                            <p *ngIf="phone.hasError('minlength') || phone.hasError('maxlength')" class="text-danger">
+                                Name
+                                Length Must Be 10-15 characters</p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="mb-3">
+                    <label>Address</label>
+                    <textarea name="address" formControlName="address" class="form-control border-3 border-primary" placeholder="Address...."></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>City</label>
+                        <input type="text" name="city" formControlName="city" placeholder="City Name" class="form-control border-3 border-primary">
+
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>State</label>
+                        <input type="text" name="state" formControlName="state" placeholder="State Name" class="form-control border-3 border-primary">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Pin</label>
+                        <input type="text" name="pin" formControlName="pin" placeholder="Pin Code" class="form-control border-3 border-primary">
+
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Pic</label>
+                        <input type="file" name="pic" (change)="getInputFile($event)"   class="form-control border-3 border-primary">
+
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">Subbmit</button>
+                </div>
+
+
+            </form>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<app-footer></app-footer>

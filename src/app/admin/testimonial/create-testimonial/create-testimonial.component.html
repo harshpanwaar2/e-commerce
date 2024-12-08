@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<app-hero title="Admin - Home"></app-hero>
+
+<div class="container-fluid my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-md-9">
+            <h5 class="bg-primary text-center p-2 text-light">Create Testimonial <a routerLink="/admin/testimonial"><i
+                        class="fa fa-backward text-light float-end"></i></a></h5>
+
+            <form [formGroup]="myForm" (submit)="postData()">
+                <div class="mb-3">
+                    <label>Name*</label>
+                    <input type="text" name="name" formControlName="name"
+                        [ngClass]="name.touched && name.invalid?'border-danger':'border-primary'"
+                        class="form-control border-2" placeholder="Testimonial Name">
+                    <div *ngIf="name.invalid && name.touched">
+                        <p *ngIf="name.hasError('required')" class="text-danger">Name Field is Mendatory</p>
+                        <p *ngIf="name.hasError('minlength') || name.hasError('maxlength')" class="text-danger">Name
+                            Field Length Must Be 3-50</p>
+                    </div>
+                    <p class="text-danger" *ngIf="show">Testimonial Name is Already Exist</p>
+                </div>
+
+                <div class=" mb-3">
+                    <label>Message*</label>
+                    <textarea name="message" formControlName="message"
+                        [ngClass]="message.touched && message.invalid?'border-danger':'border-primary'"
+                        class="form-control border-2" placeholder="Message..." rows="3"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Pic*</label>
+                        <input type="file" name="pic" (change)="getInputFile($event)"
+                            class="form-control border-2 border-primary">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Active*</label>
+                        <select name="active" formControlName="active" class="form-control border-2 border-primary">
+                            <option value="" selected disabled>Select an Option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

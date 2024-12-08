@@ -1,0 +1,153 @@
+<app-navbar></app-navbar>
+
+<app-hero title="Admin - Home"></app-hero>
+
+<div class="container-fluid my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-md-9">
+            <h5 class="bg-primary text-center p-2 text-light">Update Product <a routerLink="/admin/product"><i
+                        class="fa fa-backward text-light float-end"></i></a></h5>
+
+            <form [formGroup]="myForm" (submit)="postData()">
+                <div class="mb-3">
+                    <label>Name*</label>
+                    <input type="text" name="name" formControlName="name"
+                        [ngClass]="name.touched && name.invalid?'border-danger':'border-primary'"
+                        class="form-control border-2" placeholder="Product Name">
+                    <div *ngIf="name.invalid && name.touched">
+                        <p *ngIf="name.hasError('required')" class="text-danger">Name Field is Mendatory</p>
+                        <p *ngIf="name.hasError('minlength') || name.hasError('maxlength')" class="text-danger">Name
+                            Field Length Must Be 3-50</p>
+                    </div>
+                    <p class="text-danger" *ngIf="show">Product Name is Already Exist</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <label>Maincategory*</label>
+                        <select name="maincategory" formControlName="maincategory" class="form-select border-primary border-2" >
+                             <option *ngFor="let item of maincategory" value="{{item.name}}">{{item.name}}</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <label>Subcategory*</label>
+                        <select name="subcategory" formControlName="subcategory" class="form-select border-primary border-2" >
+                             <option *ngFor="let item of subcategory" value="{{item.name}}">{{item.name}}</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <label>Brand*</label>
+                        <select name="brand" formControlName="brand" class="form-select border-primary border-2" >
+                             <option *ngFor="let item of brand" value="{{item.name}}">{{item.name}}</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <label>Stock*</label>
+                        <select name="stock" formControlName="stock" class="form-select border-primary border-2" >
+                             <option  value="1">Yes</option>
+                             <option  value="1">No</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+  
+                        <label>Color*</label>
+                        <input type="text" name="color" formControlName="color"
+                            [ngClass]="color.touched && color.invalid?'border-danger':'border-primary'"
+                            class="form-control border-2" placeholder="Color">
+                            <p *ngIf="color.invalid && color.touched" class="text-danger">Color Field is Mendatory</p>
+                            
+                </div>
+
+                <div class="col-md-6 mb-3">
+  
+                    <label>Size*</label>
+                    <input type="text" name="size" formControlName="size"
+                        [ngClass]="size.touched && size.invalid?'border-danger':'border-primary'"
+                        class="form-control border-2" placeholder="Size">
+                        <p *ngIf="size.invalid && size.touched" class="text-danger">Size Field is Mendatory</p>
+                        
+            </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 mb-3">
+  
+                        <label>Base Price*</label>
+                        <input type="text" name="basePrice" formControlName="basePrice"
+                            [ngClass]="basePrice.touched && basePrice.invalid?'border-danger':'border-primary'"
+                            class="form-control border-2" placeholder="Base Price">
+                            <p *ngIf="basePrice.invalid && basePrice.touched" class="text-danger">Base Price Field is Mendatory</p>
+                            
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-3">
+  
+                    <label>Discount*</label>
+                    <input type="text" name="discount" formControlName="discount"
+                        [ngClass]="discount.touched && discount.invalid?'border-danger':'border-primary'"
+                        class="form-control border-2" placeholder="Discount">
+                        <p *ngIf="discount.invalid && discount.touched" class="text-danger">Discount Field is Mendatory</p>
+                        
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+  
+                <label>Stock Quantity*</label>
+                <input type="text" name="stockQuantity" formControlName="stockQuantity"
+                    [ngClass]="stockQuantity.touched && stockQuantity.invalid?'border-danger':'border-primary'"
+                    class="form-control border-2" placeholder="Stock Quantity">
+                    <p *ngIf="stockQuantity.invalid && stockQuantity.touched" class="text-danger">Stock Quantity Field is Mendatory</p>
+                    
+        </div>
+        
+                </div>
+
+                <div class="mb-3">
+                    <label >Description</label>
+                    <div class="rtediv"></div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Pic*</label>
+                        <input type="file" name="pic" multiple (change)="getInputFile($event)"
+                            class="form-control border-2 border-primary">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Active*</label>
+                        <select name="active" formControlName="active" class="form-control border-2 border-primary">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label> Click on Image to Remove</label><br>
+                    <img *ngFor="let p of oldPics" src={{apiUrl}}{{p}} (click)="deletePic(p)" height="50px" width="60px" alt="no Image" class="m-1">
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

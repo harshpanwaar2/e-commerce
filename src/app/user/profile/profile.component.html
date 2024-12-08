@@ -1,0 +1,101 @@
+<app-navbar></app-navbar>
+
+<app-hero title="Buyer Profile"></app-hero>
+
+
+<div class="container-fluid my-3">
+    <app-profile-component title="Buyer Profile"></app-profile-component>
+
+    <h5 class="bg-primary text-center p-2 text-light">Wishlist Section</h5>
+    <div *ngIf="wishlist.length" class="mb-3">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Color</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of wishlist">
+                    <td>
+                        <a href={{apiUrl}}{{item.pic}} target="_blank">
+                            <img src={{apiUrl}}{{item.pic}} height="50px" width="50px" alt="">
+                        </a>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.brand}}</td>
+                    <td>{{item.color}}</td>
+                    <td>{{item.size}}</td>
+                    <td>&#8377;{{item.price}}</td>
+                    <td><a [routerLink]="['/product']" [queryParams]="{id:item.product}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a></td>
+                    <td><button class="btn btn-danger" (click)="deleteRecord(item.id)"><i class="fa fa-trash"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="wishlist.length==0" class="text-center p-5 card">
+        <h4>No Items in Wishlist</h4>
+        <a routerLink="/shop" class="btn btn-primary w-25 m-auto">Shop Now</a>
+    </div>
+
+    <h5 class="bg-primary text-center p-2 text-light">Order History Section</h5>
+    <div *ngIf="orders.length" class="mb-3">
+        <div class="row" *ngFor="let order of orders">
+            <div class="col-md-3">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <th>Order ID</th>
+                                <td>{{order.id}}</td>
+                            </tr>
+                            <tr>
+                                <th>Order Status</th>
+                                <td>{{order.orderStatus}}</td>
+                            </tr>
+                            <tr>
+                                <th>Payment Mode</th>
+                                <td>{{order.paymentMode}}</td>
+                            </tr>
+                            <tr>
+                                <th>Payment Status</th>
+                                <td>{{order.paymentStatus}}</td>
+                            </tr>
+                            <tr>
+                                <th>Subtotal</th>
+                                <td>&#8377;{{order.subtotal}}</td>
+                            </tr>
+                            <tr>
+                                <th>Shipping</th>
+                                <td>&#8377;{{order.shipping}}</td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <td>&#8377;{{order.total}}</td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td>{{order.date|date:"short"}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <app-cart-show-component [cart]="order.products"></app-cart-show-component>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="orders.length==0" class="text-center p-5 card">
+        <h4>No Order History Found</h4>
+        <a routerLink="/shop" class="btn btn-primary w-25 m-auto">Shop Now</a>
+    </div>
+</div>
+
+<app-footer></app-footer>

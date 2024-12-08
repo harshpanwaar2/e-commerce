@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+
+
+<app-hero title="Contact Us"></app-hero>
+
+
+<!-- Contact Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-secondary text-uppercase text-center">Get In Touch</h6>
+                <h1 class="mb-4">Contact For Any Query</h1>
+
+                <iframe width="100%" height="470px" id="gmap_canvas"
+                    src="https://maps.google.com/maps?q=a-43%20sector%2016%20noida&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+
+
+            </div>
+            <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="bg-light p-5 h-100 ">
+                    <p *ngIf="showMessage" class="text-success text-center">{{showMessage}}</p>
+                    <form [formGroup]="myForm" (submit)="postData()">
+                        <div class="mb-3">
+                            <label>Name*</label>
+                            <input type="text" name="name" formControlName="name"
+                                [ngClass]="name.invalid && name.touched?'border-danger':'border-primary'"
+                                class="form-control border-3" placeholder="Full Name">
+                            <p class="text-danger" *ngIf="name.touched && name.invalid">Name Field Is Mendatory</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label>Email*</label>
+                                <input type="email" name="email" formControlName="email"
+                                    [ngClass]="email.invalid && email.touched?'border-danger':'border-primary'"
+                                    class="form-control border-3" placeholder="Email Address">
+                                <p class="text-danger" *ngIf="email.touched && email.invalid">Email Address Is Mendatory
+                                </p>
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Phone*</label>
+                                <input type="text" name="phone" formControlName="phone"
+                                    [ngClass]="phone.invalid && phone.touched?'border-danger':'border-primary'"
+                                    class="form-control border-3" placeholder="Phone Number">
+                            <p class="text-danger" *ngIf="phone.touched && phone.invalid">Phone Number Is Mendatory</p>
+
+                            </div>
+                        </div>
+                        <div class=" mb-3">
+                            <label>Subject*</label>
+                            <input type="text" name="subject" formControlName="subject"
+                                [ngClass]="subject.invalid && subject.touched?'border-danger':'border-primary'"
+                                class="form-control border-3" placeholder="Subject">
+                            <p class="text-danger" *ngIf="subject.touched && subject.invalid">Subject Field Is Mendatory</p>
+
+                        </div>
+                        <div class=" mb-3">
+                            <label>Message*</label>
+                            <textarea name="message" formControlName="message"
+                                [ngClass]="message.invalid && message.touched?'border-danger':'border-primary'"
+                                class="form-control border-3" placeholder="Message...." rows="5"></textarea>
+                            <p class="text-danger" *ngIf="message.touched && message.invalid">Message Field Is Mendatory</p>
+
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+
+
+<app-testimonial></app-testimonial>
+
+
+
+<app-footer></app-footer>

@@ -1,0 +1,85 @@
+<h5 class="bg-primary text-center p-2 text-light">Cart Section</h5>
+<div *ngIf="cart.length" class="mb-3">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Color</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th *ngIf="title!=='Checkout Page'"></th>
+                    <th>Qty</th>
+                    <th *ngIf="title!=='Checkout Page'"></th>
+                    <th>Total</th>
+                    <th *ngIf="title!=='Checkout Page'"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of cart">
+                    <td>
+                        <a href={{apiUrl}}{{item.pic}} target="_blank">
+                            <img src={{apiUrl}}{{item.pic}} height="50px" width="50px" alt="">
+                        </a>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.brand}}</td>
+                    <td>{{item.color}}</td>
+                    <td>{{item.size}}</td>
+                    <td>&#8377;{{item.price}}</td>
+                    <td *ngIf="title!=='Checkout Page'"><button class="btn btn-primary"
+                            (click)="updateRecord(item.id,'DEC')"><i class="fa fa-minus"></i></button></td>
+                    <td>{{item.qty}}</td>
+                    <td *ngIf="title!=='Checkout Page'"><button class="btn btn-primary"
+                            (click)="updateRecord(item.id,'INC')"><i class="fa fa-plus"></i></button></td>
+                    <td>&#8377;{{item.total}}</td>
+                    <td *ngIf="title!=='Checkout Page'"><button class="btn btn-danger"
+                            (click)="deleteRecord(item.id)"><i class="fa fa-trash"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-6" *ngIf="title!=='Checkout Page'"></div>
+        <div [ngClass]="title!='Checkout Page'?'col-md-6':'col-12'">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Subtotal</th>
+                        <td>&#8377;{{subtotal}}</td>
+                    </tr>
+                    <tr>
+                        <th>Shipping</th>
+                        <td>&#8377;{{shipping}}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>&#8377;{{total}}</td>
+                    </tr>
+                    <tr>
+                        <th>Payment Mode</th>
+                        <td>
+                            <select name="mode" (change)="getMode($event)" class="form-select border-3 border-primary">
+                                <option value="COD">COD</option>
+                                <option disabled value="Net Banking">Net Banking/CARD/UPI</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" *ngIf="title=='Cart Page'"><a class="btn btn-primary w-100"
+                                routerLink="/user/checkout">Proceed To Checkout</a></td>
+                        <td colspan="2" *ngIf="title=='Checkout Page'" (click)="placeOrder()"><button
+                                class="btn btn-primary w-100">Place
+                                Order</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf="cart.length==0" class="text-center p-5 card">
+    <h4>No Items in Cart</h4>
+    <a routerLink="/shop" class="btn btn-primary w-25 m-auto">Shop Now</a>
+</div>

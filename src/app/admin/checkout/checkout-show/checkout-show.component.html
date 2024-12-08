@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+
+<app-hero title="Admin - Home"></app-hero>
+
+<div class="container-fluid my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-md-9">
+            <h5 class="bg-primary text-center p-2 text-light">Checkout Query</h5>
+            <table class="table table-bordered table-striped table-hover">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{data.id}}</td>
+                    </tr>
+                    <tr>
+                        <th>User</th>
+                        <td>{{data.user}}</td>
+                    </tr>
+                    <tr>
+                        <th>Order Status</th>
+                        <td>{{data.orderStatus}}
+                            <div *ngIf="data.orderStatus!=='Delivered'" class="mt-2">
+                                <select name="orderStatus" (change)="getInputData($event)" class="form-select border-3 border-primary">
+                                        <option>Order is Placed</option>                                    
+                                        <option>Order is Packed</option>                                    
+                                        <option>Order is Ready to Ship</option>                                    
+                                        <option>Order is Shipped</option>                                    
+                                        <option>Order is in Transit</option>                                    
+                                        <option>Order is Reached at the Final Delivery Station</option>                                    
+                                        <option>Order is Out for Delivery</option>                                    
+                                        <option>Delivered</option>                                    
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Payment Mode</th>
+                        <td>{{data.paymentMode}}</td>
+                    </tr>
+                    <tr>
+                        <th>Payment Status</th>
+                        <td>{{data.paymentStatus}}
+
+                            <div *ngIf="data.paymentStatus!=='Done'" class="mt-2">
+                                <select name="paymentStatus" (change)="getInputData($event)" class="form-select border-3 border-primary">
+                                        <option>Pending</option>                                    
+                                        <option>Done</option>                                    
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Subtotal</th>
+                        <td>&#8377;{{data.subtotal}}</td>
+                    </tr>
+                    <tr>
+                        <th>Shipping</th>
+                        <td>&#8377;{{data.shipping}}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>&#8377;{{data.total}}</td>
+                    </tr>
+                    <tr>
+                        <th>RPPID</th>
+                        <td>{{data.rppid?data.rppid:"N/A"}}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{data.date|date:"full"}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button *ngIf="data.orderStatus!=='Delivered' ||  data.paymentStatus!=='Done'"
+                                class="btn btn-primary w-100" (click)="updateRecord()">Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <app-cart-show-component [cart]="data.products"></app-cart-show-component>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

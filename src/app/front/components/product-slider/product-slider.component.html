@@ -1,0 +1,37 @@
+    <!-- Service Start -->
+    <div class="container py-1 px-4 px-lg-0">
+        <div class="row g-0">
+            <!-- <div class="col-lg-1 col-md-2 col-sm-4 d-none d-lg-flex ">
+                <div class="d-flex align-items-center justify-content-center bg-primary w-100 h-100 ">
+                    <h3 class=" text-white m-0" style="transform: rotate(-90deg);">Products</h3>
+                </div>
+            </div> -->
+            <!-- <div class="col-lg-11 col-md-10 col-sm-8 col-12 "> -->
+                <div >
+                    <div class="text-center  wow fadeInUp" data-wow-delay="0.1s">
+                        <h6 class="text-secondary text-uppercase"> Our Products</h6>
+                        <h1 class="mb-5">Checkout {{maincategory}} Products </h1>
+                    </div>
+                    
+                        
+                    <div class=" service-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
+                        <owl-carousel-o [options]="customOptions">
+                        <ng-template carouselSlide *ngFor="let item of data">
+                            <div class="card" >
+                                <img src="{{apiUrl}}{{item.pic[0]}}" style="height:250px" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h6 class="card-title">{{item.name}}</h6>
+                                  <p class="card-text"><del class="text-danger">&#8377;{{item.basePrice}}</del> &#8377;{{item.finalPrice}}<sup class="text-success">{{item.discount}}% off</sup></p>
+                                  <a [routerLink]="['/product']" [queryParams]="{id:item.id}" class="btn btn-primary">Add to Cart</a>
+                                </div>
+                              </div>
+                    </ng-template>
+
+                </owl-carousel-o>
+                    <!-- </div> -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->

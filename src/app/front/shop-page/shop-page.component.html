@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+
+<app-hero title="Shop"></app-hero>
+
+<div class="container-fluid my-3">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="list-group mb-3">
+                <button class="list-group-item list-group-item-action active" aria-current="true"> Maincategory</button>
+                <button class="list-group-item list-group-item-action" (click)="filterData('',sc,br)">All <i
+                        *ngIf="mc =='' " class="fa fa-check float-end"></i></button>
+                <button class="list-group-item list-group-item-action" *ngFor="let item of maincategory"
+                    (click)="filterData(item.name,sc,br)">{{item.name}} <i *ngIf="mc ==item.name "
+                        class="fa fa-check float-end"></i></button>
+
+            </div>
+            <div class="list-group mb-3">
+                <button class="list-group-item list-group-item-action active" aria-current="true"> Subcategory</button>
+                <button class="list-group-item list-group-item-action" (click)="filterData(mc,'',br)">All <i
+                        *ngIf="sc =='' " class="fa fa-check float-end"></i></button>
+                <button class="list-group-item list-group-item-action" *ngFor="let item of subcategory"
+                    (click)="filterData(mc,item.name,br)">{{item.name}} <i *ngIf="sc ==item.name"
+                        class="fa fa-check float-end"></i></button>
+
+            </div>
+            <div class="list-group mb-3">
+                <button class="list-group-item list-group-item-action active" aria-current="true"> Brand</button>
+                <button class="list-group-item list-group-item-action" (click)="filterData(mc,sc,'')">All <i
+                        *ngIf="br =='' " class="fa fa-check float-end"></i></button>
+                <button class="list-group-item list-group-item-action" *ngFor="let item of brand"
+                    (click)="filterData(mc,sc,item.name)">{{item.name}} <i *ngIf="br ==item.name"
+                        class="fa fa-check float-end"></i></button>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="btn-group w-100">
+                        <input type="search" name="search" (change)="getInputSearch($event)" placeholder="Search Product By Name ,Category,Brand,Color,Description etc" class="form-control border-3 border-primary" >
+                        <button (click)="postSearch()" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select name="sortFilter" (change)="sortFilter($event)" class="form-control border-3 border-primary">
+                        <option value="1">Latest</option>
+                        <option value="2">Price: High to Low </option>
+                        <option value="3">Price: Low to High </option>
+                    </select>
+                </div>
+            </div>
+            <app-products [products]="filteredProducts" [flag]="flag"></app-products>
+        </div>
+    </div>
+</div>
+
+<app-testimonial></app-testimonial>
+
+<app-footer></app-footer>

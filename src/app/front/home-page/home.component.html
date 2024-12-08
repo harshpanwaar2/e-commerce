@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+
+
+
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0 mb-5">
+    <div class="owl-carousel header-carousel position-relative">
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide>
+                <div class="owl-carousel-item position-relative">
+                    <img class="img-fluid" src="img/banner1.jpg" style="height:600px" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                        style="background: rgba(0, 0, 0, .4);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <h5 class="text-white text-uppercase mb-3 animated slideInDown">Jeans, Tshirt,
+                                        Shirt, Trousers and More</h5>
+                                    <h1 class="display-3 text-white animated slideInDown mb-4">Best Male Fashion
+                                        Products of Top Brands</h1>
+
+                                    <a routerLink="['/shop']" [queryParams]="{mc:'Male'}"
+                                        class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Shop Now</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+
+            <ng-template carouselSlide>
+                <div class="owl-carousel-item position-relative">
+                    <img class="img-fluid" src="img/banner2.jpg" style="height:600px" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                        style="background: rgba(0, 0, 0, .4);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <h5 class="text-white text-uppercase mb-3 animated slideInDown">Jeans, Tshirt,
+                                        Shirt, Trousers and More</h5>
+                                    <h1 class="display-3 text-white animated slideInDown mb-4">Best Female Fashion
+                                        Products of Top Brands</h1>
+
+                                    <a routerLink="['/shop']" [queryParams]="{mc:'Female'}"
+                                        class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template carouselSlide>
+                <div class="owl-carousel-item position-relative">
+                    <img class="img-fluid" src="img/banner4.jpg" style="height:600px" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                        style="background: rgba(0, 0, 0, .4);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <h5 class="text-white text-uppercase mb-3 animated slideInDown">Jeans, Tshirt,
+                                        Shirt, Trousers and More</h5>
+                                    <h1 class="display-3 text-white animated slideInDown mb-4">Best Kids Fashion
+                                        Products of Top Brands</h1>
+
+                                    <a routerLink="['/shop']" [queryParams]="{mc:'Kids'}"
+                                        class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+        </owl-carousel-o>
+    </div>
+</div>
+<!-- Carousel End -->
+<app-product-slider *ngFor="let item of maincategory" [maincategory]="item.name" [products]="products"></app-product-slider>
+
+
+<app-about></app-about>
+<app-fact></app-fact>
+
+<app-products *ngFor="let item of maincategory" [maincategory]="item.name" [products]="products"></app-products>
+
+
+
+<app-testimonial></app-testimonial>
+
+
+<app-footer></app-footer>
